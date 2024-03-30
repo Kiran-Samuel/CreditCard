@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Predict Credit card defaulter</title>
+  
+</head>
+
+<body style="background: #000;">
+ <div class="login">
+	<h1 style="color:Violet;">Predict Credit card defaulter</h1>
+	<p style="color:white">Credit Card Default prediction API helps you to determine who will default in their credit card payments..</p>
+	<p style="color:white">All values are to be input as integers.</p>
+	<p style="color:white">Description of variables are given below</p>
+	<p style="color:white">LIMIT_BAL: Amount of given credit in NT dollars</p>
+	<p style="color:white">SEX: Gender (1 = Male, 2 = Female)</p>
+	<p style="color:white">EDUCATION: (1 = Graduate School, 2 = University, 3 = High school, 4 = Others)</p>
+	<p style="color:white">MARRIAGE: Marital status (1 = Married, 2 = Single, 3 = Others)</p>
+	<p style="color:white">AGE: Age of the customer</p>
+	<p style="color:white">PAY_1: Repayment status in September (-1= pay duly, 1= Payment delay for one month, 2= Payment delay for two months,
+                                       3= Payment delay for three months, 4= Payment delay for four months, 
+                                     … 8= Payment delay for eight months, 9= Payment delay for nine months and above)</p>
+	<p style="color:white">PAY_2: Repayment status in August (same scale as above).</p>
+	<p style="color:white">PAY_3: Repayment status in July (same scale as above)</p>
+	<p style="color:white">PAY_4: Repayment status in June (same scale as above)</p>
+	<p style="color:white">PAY_5: Repayment status in May (same scale as above)</p>
+	<p style="color:white">PAY_6: Repayment status in April (same scale as above)</p>
+	<p style="color:white">Total bill amount : Total amount on bill for 6 months</p>
+	<p style="color:white">Total paid amount : Total amount paid in 6 months</p>
+
+     <!-- Action is where the data is sent. In our case, predict page.
+     If action is omitted, it assumed to be the current page -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Balance limit" placeholder="Balance limit" required="required" /><br>
+    	<input type="text" name="sex" placeholder="sex" required="required" /><br>
+    	<input type="text" name="education" placeholder="education" required="required" /><br>
+    	<input type="text" name="marriage" placeholder="marriage" required="required" /><br>
+    	<input type="text" name="age" placeholder="age" required="required" /><br>
+    	<input type="text" name="pay_1" placeholder="pay_1" required="required" /><br>
+    	<input type="text" name="pay_2" placeholder="pay_2" required="required" /><br>
+    	<input type="text" name="pay_3" placeholder="pay_3" required="required" /><br>
+    	<input type="text" name="pay_4" placeholder="pay_4" required="required" /><br>
+    	<input type="text" name="pay_5" placeholder="pay_5" required="required" /><br>
+    	<input type="text" name="pay_6" placeholder="pay_6" required="required" /><br>
+    	<input type="text" name="total_bill_amount" placeholder="total_bill_amount" required="required" /><br>
+        <input type="text" name="total_paid_amount" placeholder="total_paid_amount" required="required" /><p>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button></p>
+    </form>
+
+   <br>
+   <br>
+   <h4 style="color:Violet;">
+   {{ prediction_text }} </h4>
+
+ </div>
+
+
+</body>
+</html>
